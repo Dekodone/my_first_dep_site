@@ -1,0 +1,71 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Add person
+{% endblock %}
+
+
+{% block content %}
+    <div class="container my-3">
+      <h3>Update person</h3>
+      <div class="card my-4">
+        <div class="d-flex justify-content-center">
+        <h5  class="text-uppercase">{{myperson.firstname}} {{myperson.lastname}}</h5>
+        </div>
+        <div class="card-body">
+            {% if messages %}
+                {% for msg in messages %}
+                <p class="text-success">{{msg}}</p>
+                {% endfor %}
+            {% endif %}
+          <form method="post" action="/update/{{myperson.id}}">
+            {% csrf_token %}
+            <table class="table table-success table-striped">
+              <tr>
+                <th>Firstname</th>
+                <td>
+                  <input type="text" value="{{myperson.firstname}}" name="firstname" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Lastname</th>
+                <td>
+                  <input type="text" value="{{myperson.lastname}}" name="lastname" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Emale</th>
+                <td>
+                  <input type="text" value="{{myperson.emale}}" name="emale" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>
+                  <input type="text" value="{{myperson.phone}}" name="phone" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Age</th>
+                <td>
+                  <input type="date" value="{{myperson.age|date:'Y-m-d' }}" name="age" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                <div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-primary">
+                      <a href="/people/person/{{myperson.id}}" style="text-decoration: none; color: white;"> Back to people </a>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Add person
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container my-3">
+      <h3>Add person</h3>
+      <div class="card my-4">
+        <h5>Add person</h5>
+        <div class="card-body">
+            {% if messages %}
+                {% for msg in messages %}
+                <p class="text-success">{{msg}}</p>
+                {% endfor %}
+            {% endif %}
+          <form method="post" action="/add/">
+            {% csrf_token %}
+            <table class="table table-success table-striped">
+              <tr>
+                <th>Firstname</th>
+                <td>
+                  <input type="text" name="firstname" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Lastname</th>
+                <td>
+                  <input type="text" name="lastname" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Emale</th>
+                <td>
+                  <input type="text" name="emale" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Phone</th>
+                <td>
+                  <input type="text" name="phone" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <th>Age</th>
+                <td>
+                  <input type="date" name="age" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="table-active">
+                <div class="d-flex justify-content-end">
+                  <div >
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="button" class="btn btn-primary">
+                        <a href="/people/" style="text-decoration: none; color: white;"> Back to people </a>
+                    </button>
+                  </div>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}

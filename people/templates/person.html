@@ -1,0 +1,30 @@
+{% extends "master.html" %} {% block title %} Details about {{
+myperson.firstname }} {{ myperson.lastname }} {% endblock %} {% block content %}
+<div class="mycard">
+  <h1>{{ myperson.firstname }} {{ myperson.lastname }}</h1>
+
+  <p>emale: {{ myperson.emale }}</p>
+  <p>Phone: {{ myperson.phone }}</p>
+  <p>date of birth: {{ myperson.age }}</p>
+
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-primary" type="button" value="Input">
+      <a
+        href="/update/{{ myperson.id }}"
+        style="text-decoration: none; color: white"
+      >
+        Update
+      </a>
+    </button>
+    <button class="btn btn-danger" type="button" value="Input">
+      <a
+        onclick="return confirm('Are tou sure to delete ?')"
+        href="/delete/{{ myperson.id }}"
+        style="text-decoration: none; color: white"
+      >
+        Delete
+      </a>
+    </button>
+  </div>
+</div>
+{% endblock %}

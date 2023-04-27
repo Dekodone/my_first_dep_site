@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+
+{% block title %}
+  List of all people
+{% endblock %}
+
+
+{% block content %}
+<div class="mycard" >
+  <h1>People</h1>
+  
+  <ul>
+    {% for x in mypeople %}
+      <li onclick="window.location = 'person/{{ x.id }}'">{{ x.firstname }} {{ x.lastname }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="d-flex justify-content-around">
+    <button class="btn btn-primary" type="button" value="Input">
+      <a href="/add/" style="text-decoration: none; color: white;"> Add new </a></button>
+    </div>
+
+</div>
+{% endblock %}
